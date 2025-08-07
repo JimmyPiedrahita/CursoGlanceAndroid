@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Widget</string>
+    <string name="quote_widget_description">Widget para notas</string>
 </resources>
