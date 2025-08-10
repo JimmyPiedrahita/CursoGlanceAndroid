@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
 
     <application
         android:allowBackup="true"
@@ -25,7 +26,8 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".basic.BasicWidgetReceiver"
+        <receiver
+            android:name=".basic.BasicWidgetReceiver"
             android:exported="true"
             android:label="Widget Basic">
             <intent-filter>
@@ -37,7 +39,8 @@
                 android:resource="@xml/widget_basic_info" />
         </receiver>
 
-        <receiver android:name=".quotewidget.QuoteWidgetReceiver"
+        <receiver
+            android:name=".quotewidget.QuoteWidgetReceiver"
             android:exported="true"
             android:label="Quote_Widget">
 
@@ -50,6 +53,40 @@
                 android:resource="@xml/wigdet_quote_info" />
         </receiver>
 
+        <receiver
+            android:name=".pomodoro.PomodoroReceiver"
+            android:exported="true"
+            android:label="Quote_Widget">
+
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <!--                <action android:name="android.appwidget.action.APPWIDGET_DISABLED" />-->
+                <!--                <action android:name="android.appwidget.action.APPWIDGET_ENABLED" />-->
+                <!--                <action android:name="android.appwidget.action.APPWIDGET_DELETED" />-->
+
+                <!--                &lt;!&ndash;Permission: RECEIVE_BOOT_COMPLETED&ndash;&gt;-->
+                <!--                <action android:name="android.intent.action.BOOT_COMPLETED" />-->
+
+                <!--                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />-->
+                <!--                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />-->
+
+                <!--                <action android:name="android.intent.action.BATTERY_LOW" />-->
+                <!--                <action android:name="android.intent.action.BATTERY_OKAY" />-->
+
+                <!--                &lt;!&ndash;Permission: ACCESS_NETWORK_STATE&ndash;&gt;-->
+                <!--                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />-->
+
+                <!--                &lt;!&ndash;Permission: ACCESS_WIFI_STATE&ndash;&gt;-->
+                <!--                <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />-->
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_pomodoro_info" />
+        </receiver>
+
+        <receiver android:name=".pomodoro.PomodoroAlarmReceiver"
+            android:exported="false" />
     </application>
 
 </manifest>
